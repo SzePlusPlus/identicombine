@@ -9,6 +9,7 @@ parser = argparse.ArgumentParser()
 parser.add_argument('--image1', type=str)
 parser.add_argument('--image2', type=str)
 parser.add_argument('--output', type=str)
+parser.add_argument('--algo', type=str, default='average')
 args = parser.parse_args()
 
 # Read images
@@ -19,7 +20,11 @@ image2 = np.array(imageio.imread(args.image2), dtype='int64')
 assert image1.shape == image2.shape
 
 # Combine images
-image_combined = np.array(np.divide(image1 + image2, 2), dtype='uint8')
+if args.algo == 'average':
+	image_combined = np.divide(image1 + image2, 2)
+elif args.algo == 'overlay':
+	gray = np.array([240, 240, 240])
+	image_combined = np.where(image2 == gray, image1, image2)
 
 # Save image
-imageio.imwrite(args.output, image_combined)
+imageio.imwrite(args.output, np.array(image_combined, dtype='uint8'))
