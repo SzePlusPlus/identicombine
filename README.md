@@ -10,4 +10,4 @@ Overlay:
 <img src="https://github.com/SzePlusPlus/identicombine/blob/master/images/image1.png" height="200" width="200"> + <img src="https://github.com/SzePlusPlus/identicombine/blob/master/images/image2.png" height="200" width="200"> = <img src="https://github.com/SzePlusPlus/identicombine/blob/master/images/overlay.png" height="200" width="200">
 
 # Usage
-```python combine.py --image1 image1.png --image2 image2.png --output output.png```
+```python combine.py --image1 image1.png --image2 image2.png --output output.png --algo average```
